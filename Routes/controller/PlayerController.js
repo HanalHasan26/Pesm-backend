@@ -3,7 +3,7 @@ const Player = require("../../Models/Players");
 
 const DeclinePlayer = asyncHandler (async(req,res)=>{
     const { Name,Fullname, Team, League, Nationality, Rating,level, Contract, Position, FullNamePosition,Age, Height, Weight, Condition, Price, star,
-         foot,footUsage,footAcc, form,injury, category, footPic, teamPic, nationalityPic, playerDp, LeaguePic} = req.body;
+         foot,footUsage,footAcc, form,injury, CardType, footPic, teamPic, nationalityPic, playerDp, LeaguePic} = req.body;
 
        const { OffensiveA, Finishing, KinkingPower,BallControl, Dribbling, TightPossession, Balance, LowPass,
          LoftedPass, SetPieceTaking, Curl, Speed, Acceleration, PhysicalContact, Stamina,Heading, Jumping, DeffensiveAwareness, Tackling,DefensiveEngagement,
@@ -38,7 +38,7 @@ const DeclinePlayer = asyncHandler (async(req,res)=>{
     footAcc,
     form,
     injury,
-    category,
+    CardType,
     footPic,
     teamPic,
     nationalityPic, 
@@ -112,7 +112,7 @@ const DeclinePlayer = asyncHandler (async(req,res)=>{
     footAcc:player.footAcc,
     form:player.form,
     injury:player.injury,
-    category : player.category,
+    CardType : player.CardType,
     footPic : player.footPic,
     teamPic : player.teamPic,
     nationalityPic : player.nationalityPic, 
@@ -173,36 +173,34 @@ const fetchAllPlyers = asyncHandler (async(req,res)=>{
 
 const fetchStanderdPlayers = asyncHandler (async(req,res)=>{
 
-const standerdPlayers = await Player.find({ category : "Standerd" });
+const standerdPlayers = await Player.find({ CardType : "Standerd" });
 res.json(standerdPlayers)
 
 })
 
 const fetchLegenderyPlayers = asyncHandler (async(req,res)=>{
 
-const LegendaryPlayers = await Player.find({ category : "Legend" });
+const LegendaryPlayers = await Player.find({ CardType : "Legend" });
 res.json(LegendaryPlayers)
 
 })
 
 const fetchFeaturedPlayers = asyncHandler (async(req,res)=>{
 
-const FeaturedPlayers = await Player.find({ category : "Featured" });
+const FeaturedPlayers = await Player.find({ CardType : "Featured" });
 res.json(FeaturedPlayers)
 console.log(FeaturedPlayers);
 
 })
 const fetchEpicPlayers = asyncHandler (async(req,res)=>{
 
-const EpicPlayers = await Player.find({ category : "Epic" });
+const EpicPlayers = await Player.find({ CardType : "Epic" });
 res.json(EpicPlayers)
 console.log(EpicPlayers);
 
 })
 
-const fetchNewPlayer =(req,res)=>{
 
-}
 
 
 module.exports = {DeclinePlayer,fetchAllPlyers,fetchStanderdPlayers,fetchLegenderyPlayers,fetchFeaturedPlayers,fetchEpicPlayers}; 
