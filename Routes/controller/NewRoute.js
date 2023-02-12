@@ -68,4 +68,9 @@ const removeTrending = asyncHandler(async(req,res)=>{
     res.json(removeTrending)
 })
 
-module.exports ={addNewPlayer,fetchNewPlayer,AddTrending,trending,removeTrending}
+const getPlayerId =asyncHandler(async(req,res)=>{
+    const updatePlayer = await Player.findByIdAndRemove({_id:req.params._id})
+    res.json(updatePlayer);
+})
+
+module.exports ={addNewPlayer,fetchNewPlayer,AddTrending,trending,removeTrending,getPlayerId}
