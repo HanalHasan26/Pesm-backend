@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler"); 
 const Player = require("../../Models/Players");
+const SliderHome = require("../../Models/SliderModel");
 
 const addNewPlayer =asyncHandler(async(req,res)=>{
 
@@ -84,13 +85,19 @@ const singlePlayer =asyncHandler(async(req,res)=>{
     
 })
 
+const GetSlider = asyncHandler (async(req,res)=>{
+
+    const GetSlider = await SliderHome.find({});
+    return res.json(GetSlider)
+})
+
 const slider = asyncHandler (async(req,res)=>{
 
     const {pic1,pic2,pic3}  =req.body
-    const slider = await SliderHome.updateOne({pic1:pic1,pic2:pic2,pic3:pic3});
+    const slider = await Player.updateOne({pic1:pic1,pic2:pic2,pic3:pic3});
     return res.json(slider)
 })
 
 
 
-module.exports ={addNewPlayer,fetchNewPlayer,AddTrending,trending,removeTrending,getPlayerId,singlePlayer,slider}
+module.exports ={addNewPlayer,fetchNewPlayer,AddTrending,trending,removeTrending,getPlayerId,singlePlayer,slider,GetSlider}
