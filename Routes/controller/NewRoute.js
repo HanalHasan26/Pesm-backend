@@ -74,7 +74,7 @@ const getPlayerId =asyncHandler(async(req,res)=>{
 })
 
 const singlePlayer =asyncHandler(async(req,res)=>{
-    const {_id} = req.body
+    const _id = req.params.id
     const updatePlayer = await Player.findById(_id)
     if (updatePlayer) {
         res.status(200).json(updatePlayer);

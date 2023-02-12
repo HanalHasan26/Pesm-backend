@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.route('/').post(addNewPlayer).get(fetchNewPlayer)
 router.route('/:_id').delete(getPlayerId)
-router.route('/singlePlayer').get(singlePlayer)
+router.route('/singlePlayer/:id').get(singlePlayer)
 router.route('/slider').get(slider)
 
 
