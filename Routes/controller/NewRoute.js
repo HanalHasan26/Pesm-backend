@@ -73,4 +73,24 @@ const getPlayerId =asyncHandler(async(req,res)=>{
     res.json(updatePlayer);
 })
 
-module.exports ={addNewPlayer,fetchNewPlayer,AddTrending,trending,removeTrending,getPlayerId}
+const singlePlayer =asyncHandler(async(req,res)=>{
+    const {_id} = req.body
+    const updatePlayer = await Player.findById(_id)
+    if (updatePlayer) {
+        res.status(200).json(updatePlayer);
+    } else {
+        res.status(400).json("no data found");
+    }
+    
+})
+
+const slider = asyncHandler (async(req,res)=>{
+
+    const {pic1,pic2,pic3}  =req.body
+    const slider = await SliderHome.updateOne({pic1:pic1,pic2:pic2,pic3:pic3});
+    return res.json(slider)
+})
+
+
+
+module.exports ={addNewPlayer,fetchNewPlayer,AddTrending,trending,removeTrending,getPlayerId,singlePlayer,slider}
